@@ -1,0 +1,277 @@
+<% layout('layout') %>
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center mb-3">
+                        <img src="<%= user.avatar || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(user.name) %>" 
+                             alt="<%= user.name %>" class="rounded-circle" width="80" height="80">
+                        <h5 class="mt-2 mb-0"><%= user.name %></h5>
+                        <small class="text-muted"><%= user.email %></small>
+                    </div>
+                    
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="/dashboard">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="/licenses">
+                            <i class="fas fa-key me-2"></i>
+                            My Licenses
+                        </a>
+                        <a class="nav-link" href="/dashboard/analytics">
+                            <i class="fas fa-chart-bar me-2"></i>
+                            Analytics
+                        </a>
+                        <a class="nav-link" href="/dashboard/billing">
+                            <i class="fas fa-credit-card me-2"></i>
+                            Billing
+                        </a>
+                        <a class="nav-link" href="/profile">
+                            <i class="fas fa-user me-2"></i>
+                            Profile
+                        </a>
+                        <a class="nav-link" href="/support">
+                            <i class="fas fa-headset me-2"></i>
+                            Support
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-lg-9 col-md-8">
+            <!-- Welcome Section -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card bg-primary text-white">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h2 class="card-title mb-2">Welcome back, <%= user.name %>!</h2>
+                                    <p class="card-text mb-0">
+                                        Here's what's happening with your licenses today.
+                                    </p>
+                                </div>
+                                <div class="col-md-4 text-md-end">
+                                    <div class="h4 mb-0"><%= stats.totalLicenses %></div>
+                                    <small>Total Licenses</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row mb-4">
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="text-success">
+                                <i class="fas fa-check-circle fs-1"></i>
+                            </div>
+                            <h3 class="mt-2 mb-0"><%= stats.activeLicenses %></h3>
+                            <p class="text-muted mb-0">Active Licenses</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="text-warning">
+                                <i class="fas fa-exclamation-triangle fs-1"></i>
+                            </div>
+                            <h3 class="mt-2 mb-0"><%= stats.expiredLicenses %></h3>
+                            <p class="text-muted mb-0">Expired Licenses</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="text-info">
+                                <i class="fas fa-dollar-sign fs-1"></i>
+                            </div>
+                            <h3 class="mt-2 mb-0">$<%= stats.totalSpent %></h3>
+                            <p class="text-muted mb-0">Total Spent</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <div class="text-primary">
+                                <i class="fas fa-chart-line fs-1"></i>
+                            </div>
+                            <h3 class="mt-2 mb-0">2,100</h3>
+                            <p class="text-muted mb-0">Total Validations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                <i class="fas fa-clock me-2"></i>
+                                Recent Activity
+                            </h5>
+                            <a href="/dashboard/analytics" class="btn btn-sm btn-outline-primary">
+                                View All
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <% if (recentActivity.length > 0) { %>
+                                <div class="list-group list-group-flush">
+                                    <% recentActivity.forEach(function(activity) { %>
+                                        <div class="list-group-item border-0 px-0">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <% if (activity.status === 'success') { %>
+                                                        <div class="bg-success rounded-circle p-2">
+                                                            <i class="fas fa-check text-white"></i>
+                                                        </div>
+                                                    <% } else if (activity.status === 'warning') { %>
+                                                        <div class="bg-warning rounded-circle p-2">
+                                                            <i class="fas fa-exclamation text-white"></i>
+                                                        </div>
+                                                    <% } else { %>
+                                                        <div class="bg-info rounded-circle p-2">
+                                                            <i class="fas fa-info text-white"></i>
+                                                        </div>
+                                                    <% } %>
+                                                </div>
+                                                <div class="flex-grow-1">
+                                                    <h6 class="mb-1"><%= activity.description %></h6>
+                                                    <small class="text-muted">
+                                                        <%= new Date(activity.timestamp).toLocaleString() %>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            <% } else { %>
+                                <div class="text-center py-4">
+                                    <i class="fas fa-inbox fs-1 text-muted mb-3"></i>
+                                    <p class="text-muted">No recent activity</p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Licenses Overview -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">
+                                <i class="fas fa-key me-2"></i>
+                                License Overview
+                            </h5>
+                            <a href="/licenses" class="btn btn-sm btn-outline-primary">
+                                Manage Licenses
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <% if (licenses.length > 0) { %>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Application</th>
+                                                <th>Status</th>
+                                                <th>Plan</th>
+                                                <th>Expires</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% licenses.slice(0, 3).forEach(function(license) { %>
+                                                <tr>
+                                                    <td>
+                                                        <div>
+                                                            <h6 class="mb-0"><%= license.applicationName %></h6>
+                                                            <small class="text-muted"><%= license.key %></small>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <% if (license.status === 'active') { %>
+                                                            <span class="status-badge status-active">Active</span>
+                                                        <% } else if (license.status === 'expired') { %>
+                                                            <span class="status-badge status-expired">Expired</span>
+                                                        <% } else { %>
+                                                            <span class="status-badge status-suspended">Suspended</span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-secondary"><%= license.plan %></span>
+                                                    </td>
+                                                    <td>
+                                                        <%= new Date(license.expiresAt).toLocaleDateString() %>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/licenses/<%= license.id %>" class="btn btn-sm btn-outline-primary">
+                                                            <i class="fas fa-eye me-1"></i>
+                                                            View
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% } else { %>
+                                <div class="text-center py-4">
+                                    <i class="fas fa-key fs-1 text-muted mb-3"></i>
+                                    <p class="text-muted">No licenses found</p>
+                                    <a href="/licenses" class="btn btn-primary">
+                                        <i class="fas fa-plus me-2"></i>
+                                        Get Your First License
+                                    </a>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Add some interactive features
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-refresh stats every 30 seconds
+    setInterval(function() {
+        // In a real application, this would fetch updated stats
+        console.log('Refreshing dashboard stats...');
+    }, 30000);
+    
+    // Add hover effects to cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.transition = 'transform 0.2s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+});
+</script>

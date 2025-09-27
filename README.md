@@ -87,7 +87,7 @@ NODE_ENV=development
 LICENSECHAIN_API_KEY=your-api-key
 LICENSECHAIN_APP_NAME=your-app-name
 LICENSECHAIN_APP_VERSION=1.0.0
-LICENSECHAIN_BASE_URL=https://api.licensechain.com
+LICENSECHAIN_BASE_URL=https://api.licensechain.app
 
 # Database Configuration
 DATABASE_URL=your-database-url
@@ -444,10 +444,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [https://docs.licensechain.com/customer-panel](https://docs.licensechain.com/customer-panel)
+- **Documentation**: [https://docs.licensechain.app/customer-panel](https://docs.licensechain.app/customer-panel)
 - **Issues**: [GitHub Issues](https://github.com/LicenseChain/LicenseChain-Customer-Panel/issues)
 - **Discord**: [LicenseChain Discord](https://discord.gg/licensechain)
-- **Email**: support@licensechain.com
+- **Email**: support@licensechain.app
 
 ## 🔗 Related Projects
 

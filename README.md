@@ -1,4 +1,4 @@
-# LicenseChain Customer Panel
+﻿# LicenseChain Customer Panel
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green.svg)](https://nodejs.org/)
@@ -7,18 +7,18 @@
 
 Official Customer Panel for LicenseChain - Web interface for license management and customer support.
 
-## 🚀 Features
+## ðŸš€ Features
 
-- **🔐 User Authentication** - Secure login and registration system
-- **📜 License Management** - View, validate, and manage licenses
-- **👤 Profile Management** - Update user profile and settings
-- **📊 Analytics Dashboard** - View usage statistics and analytics
-- **🎫 Support System** - Create and manage support tickets
-- **🔔 Notifications** - Real-time notifications and alerts
-- **📱 Responsive Design** - Mobile-friendly interface
-- **🛠️ Easy Integration** - Simple setup and configuration
+- **ðŸ” User Authentication** - Secure login and registration system
+- **ðŸ“œ License Management** - View, validate, and manage licenses
+- **ðŸ‘¤ Profile Management** - Update user profile and settings
+- **ðŸ“Š Analytics Dashboard** - View usage statistics and analytics
+- **ðŸŽ« Support System** - Create and manage support tickets
+- **ðŸ”” Notifications** - Real-time notifications and alerts
+- **ðŸ“± Responsive Design** - Mobile-friendly interface
+- **ðŸ› ï¸ Easy Integration** - Simple setup and configuration
 
-## 📦 Installation
+## ðŸ“¦ Installation
 
 ### Method 1: npm (Recommended)
 
@@ -52,7 +52,7 @@ docker run -p 3000:3000 licensechain-customer-panel
 4. Configure environment variables
 5. Start the application: `npm start`
 
-## 🚀 Quick Start
+## ðŸš€ Quick Start
 
 ### Basic Setup
 
@@ -106,7 +106,7 @@ JWT_SECRET=your-jwt-secret
 BCRYPT_ROUNDS=12
 ```
 
-## 📚 API Reference
+## ðŸ“š API Reference
 
 ### Routes
 
@@ -219,7 +219,7 @@ GET /analytics/licenses
 GET /analytics/performance
 ```
 
-## 🔧 Configuration
+## ðŸ”§ Configuration
 
 ### Application Settings
 
@@ -280,7 +280,7 @@ module.exports = {
 };
 ```
 
-## 🛡️ Security Features
+## ðŸ›¡ï¸ Security Features
 
 ### Authentication
 
@@ -303,7 +303,7 @@ module.exports = {
 - XSS protection
 - Secure headers
 
-## 📊 Analytics and Monitoring
+## ðŸ“Š Analytics and Monitoring
 
 ### Usage Analytics
 
@@ -347,7 +347,7 @@ app.use((err, req, res, next) => {
 });
 ```
 
-## 🔄 Error Handling
+## ðŸ”„ Error Handling
 
 ### Custom Error Types
 
@@ -388,7 +388,7 @@ app.use((err, req, res, next) => {
 });
 ```
 
-## 🧪 Testing
+## ðŸ§ª Testing
 
 ### Unit Tests
 
@@ -417,7 +417,7 @@ npm run test:integration
 npm run test:e2e
 ```
 
-## 📝 Examples
+## ðŸ“ Examples
 
 See the `examples/` directory for complete examples:
 
@@ -426,7 +426,7 @@ See the `examples/` directory for complete examples:
 - `api-integration.js` - API integration examples
 - `deployment.js` - Deployment configuration
 
-## 🤝 Contributing
+## ðŸ¤ Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -438,18 +438,18 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 4. Set up environment variables
 5. Start development server: `npm run dev`
 
-## 📄 License
+## ðŸ“„ License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🆘 Support
+## ðŸ†˜ Support
 
 - **Documentation**: [https://docs.licensechain.app/customer-panel](https://docs.licensechain.app/customer-panel)
 - **Issues**: [GitHub Issues](https://github.com/LicenseChain/LicenseChain-Customer-Panel/issues)
 - **Discord**: [LicenseChain Discord](https://discord.gg/licensechain)
 - **Email**: support@licensechain.app
 
-## 🔗 Related Projects
+## ðŸ”— Related Projects
 
 - [LicenseChain JavaScript SDK](https://github.com/LicenseChain/LicenseChain-JavaScript-SDK)
 - [LicenseChain Node.js SDK](https://github.com/LicenseChain/LicenseChain-NodeJS-SDK)
@@ -457,4 +457,13 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for the LicenseChain community**
+**Made with â¤ï¸ for the LicenseChain community**
+
+
+## API Endpoints
+
+All endpoints automatically use the /v1 prefix when connecting to https://api.licensechain.app.
+
+### Base URL
+- **Production**: https://api.licensechain.app/v1\n- **Development**: https://api.licensechain.app/v1\n\n### Available Endpoints\n\n| Method | Endpoint | Description |\n|--------|----------|-------------|\n| GET | /v1/health | Health check |\n| POST | /v1/auth/login | User login |\n| POST | /v1/auth/register | User registration |\n| GET | /v1/apps | List applications |\n| POST | /v1/apps | Create application |\n| GET | /v1/licenses | List licenses |\n| POST | /v1/licenses/verify | Verify license |\n| GET | /v1/webhooks | List webhooks |\n| POST | /v1/webhooks | Create webhook |\n| GET | /v1/analytics | Get analytics |\n\n**Note**: The SDK automatically prepends /v1 to all endpoints, so you only need to specify the path (e.g., /auth/login instead of /v1/auth/login).
+
